@@ -1,0 +1,11 @@
+scipy>=1.2.1
+Bottleneck>=1.2.1
+numba>=0.43.1
+numpy>=1.16.4
+matplotlib>=3.0.3
+setuptools>=40.8.0
+astropy>=3.1.2
+pytest>=4.3.1
+scikit_learn>=0.21.2
+sphinx_astropy>=1.1.1
+typing>=3.7.4
