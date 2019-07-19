@@ -340,7 +340,7 @@ def weighted_mean(data, inverse_squared_weights):
     for i in range(n):
         wsum += inverse_squared_weights[i]
     if wsum == 0:
-        return np.nan, np.inf
+        return np.nan, np.nan
 
     dsum = 0.0
     for i in range(n):
@@ -773,7 +773,7 @@ def no_set_solution(fit_out, error_out, counts_out, visitor_id, dataset,
                     cval, get_error, get_counts):
     fit_out[dataset, visitor_id] = cval
     if get_error:
-        error_out[dataset, visitor_id] = 0.0
+        error_out[dataset, visitor_id] = np.nan
     if get_counts:
         counts_out[dataset, visitor_id] = 0
 
@@ -884,7 +884,7 @@ def solve_visitor(data, mask, error, cval, get_error, get_counts,
             if get_error:
                 error_out[dataset, visitor_id] = math.sqrt(set_variance)
         else:
-            set_mean, set_variance = 0.0, 0.0
+            set_mean = np.nan
 
         if mean_only:
             fit_out[dataset, visitor_id] = set_mean

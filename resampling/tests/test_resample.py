@@ -98,12 +98,12 @@ def test_03_process_input_data(data_2d):
     error = data.copy()
     r._process_input_data(data, error, None, robust=0.01)
     invalid = ~r.mask
-    assert np.allclose(r.data[invalid], 0)
-    assert np.allclose(r.error[invalid], np.inf)
+    assert np.isnan(r.data[invalid]).all()
+    assert np.isnan(r.error[invalid]).all()
 
     mask = data > 0.5
     r._process_input_data(data, error, mask)
     assert not r.mask.all()
     invalid = ~r.mask
-    assert np.allclose(r.data[invalid], 0)
-    assert np.allclose(r.error[invalid], np.inf)
+    assert np.isnan(r.data[invalid]).all()
+    assert np.isnan(r.error[invalid]).all()

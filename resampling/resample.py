@@ -262,8 +262,8 @@ class Resample(object):
             error = np.ones_like(data)
             self._error_weighted = False
 
-        error[invalid] = np.inf
-        data[invalid] = 0.0
+        error[invalid] = np.nan
+        data[invalid] = np.nan
 
         self._valid_set = np.any(np.isfinite(error), axis=1)
         if not self._valid_set.any():
@@ -533,7 +533,7 @@ def intersection_loop(data, error, mask, visitor_tree, local_tree,
     n_members = visitor_tree.n_members
     full_fit = np.full((n_sets, n_members), float(settings['cval']))
     if get_error:
-        full_error = np.full((n_sets, n_members), 0.0)
+        full_error = np.full((n_sets, n_members), np.nan)
     else:
         full_error = full_fit
     if get_counts:

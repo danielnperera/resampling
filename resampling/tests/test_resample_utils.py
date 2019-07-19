@@ -136,7 +136,7 @@ def test_weighted_mean():
 
     mean, var = weighted_mean(data, weights * 0)
     assert np.isnan(mean)
-    assert var == np.inf
+    assert np.isnan(var)  # var == np.inf
 
 
 def test_calculate_set_weights():
@@ -428,5 +428,5 @@ def test_no_set_solution():
     no_set_solution(fit_out, error_out, counts_out, visitor_id, dataset,
                     cval, get_error, get_counts)
     assert fit_out[dataset, visitor_id] == -1
-    assert error_out[dataset, visitor_id] == 0
+    assert np.isnan(error_out[dataset, visitor_id])  # == 0
     assert counts_out[dataset, visitor_id] == 0
